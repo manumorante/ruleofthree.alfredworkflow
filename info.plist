@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>connections</key>
+	<dict>
+		<key>AFCCCC62-1C4E-4A91-9EA5-C6864B3C2AE0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>905DE629-A7B5-4DA4-BF5E-9663C0A9B05F</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Large text</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>7DFA4658-7EB7-47B0-BB77-048ED6F105A6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>CE188C7D-6F57-4FFA-B28D-E4D23D92D2C9</key>
+		<array/>
+	</dict>
+	<key>createdby</key>
+	<string>Manu Morante &amp; Juande</string>
+	<key>description</key>
+	<string>Rule of Three: ABC</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Rule of Three</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>36</integer>
+				<key>script</key>
+				<string>params = "{query}".split(" ")
+
+begin
+	if params.length == 2
+		p (params[1].to_f / params[0].to_f)*100
+	elsif params.length == 3
+		p (params[1].to_f / params[0].to_f)*params[2].to_f
+	else
+		p 'Wrong number of arguments'
+	end
+rescue
+	p 'There was an error!'
+end</string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>CE188C7D-6F57-4FFA-B28D-E4D23D92D2C9</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>905DE629-A7B5-4DA4-BF5E-9663C0A9B05F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>ruleofthree</string>
+				<key>runningsubtext</key>
+				<string>Calculando...</string>
+				<key>script</key>
+				<string>require_once('workflows.php');
+
+$wf = new Workflows();
+$query = "{query}";
+$query = "1 2 3";
+
+$params = preg_split("/[\s,]+/", $query);
+
+$a = $params[0];
+$b = $params[1];
+$c = $params[2];
+
+$data = (($b / $a) * $c);
+
+$wf-&gt;result( $int.'.'.time(), "$data", "$data", 'Resultado: '.$data, 'icon.png'  );
+echo $wf-&gt;toxml();
+//print_r($wf-&gt;toxml());</string>
+				<key>subtext</key>
+				<string>Type two or three numbers</string>
+				<key>title</key>
+				<string>Rule of three</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>AFCCCC62-1C4E-4A91-9EA5-C6864B3C2AE0</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>7DFA4658-7EB7-47B0-BB77-048ED6F105A6</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>====================
+REGLA DE TRES SIMPLE
+====================
+
+Primer Workflow para Alfred en Ruby de Juande y Manu:
+
+Le pasas tres parámetros: Sí A es B entonces C es X
+El tercer parámetro se puede omitir, será 100, para calcular el porcentaje.</string>
+	<key>uidata</key>
+	<dict>
+		<key>7DFA4658-7EB7-47B0-BB77-048ED6F105A6</key>
+		<dict>
+			<key>ypos</key>
+			<real>220</real>
+		</dict>
+		<key>905DE629-A7B5-4DA4-BF5E-9663C0A9B05F</key>
+		<dict>
+			<key>ypos</key>
+			<real>120</real>
+		</dict>
+		<key>AFCCCC62-1C4E-4A91-9EA5-C6864B3C2AE0</key>
+		<dict>
+			<key>ypos</key>
+			<real>180</real>
+		</dict>
+		<key>CE188C7D-6F57-4FFA-B28D-E4D23D92D2C9</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
