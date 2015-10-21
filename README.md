@@ -1,4 +1,4 @@
-Rule-of-Three
+Rule of Three
 =============
 
 A simple Workflow Alfred App.
@@ -7,4 +7,8 @@ It will show directly the result of a rule of three between two values​​. Be
 
 ---
 
-[Download](https://github.com/unavezfui/Rule-of-Three/blob/master/Rule%20of%20Three.alfredworkflow?raw=true)
+
+
+---
+
+[Download](https://github.com/unavezfui/Rule-of-Three/blob/master/Rule-of-Three.alfredworkflow?raw=true)
